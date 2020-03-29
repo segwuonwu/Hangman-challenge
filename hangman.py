@@ -19,9 +19,6 @@ drawings = [
     " ____\n|    |\n|    O\n|   -|-\n|    /\\\n|\n-\n",
 ]
 
-for i in drawings:
-    print(i)
-
 # Main game function
 def hangman():
     global secret
@@ -35,6 +32,9 @@ def hangman():
     # greater than 0 and the secret has not been guessed
     while turns > 0 and dash != secret:
         guess = input('Guess a letter: ')
+        
+        # check if the guess is in the secret and update the dash
+        # otherwise decrement turn and loop again
         if guess in secret:
             print(f"{guess} is in the secret word")
             result = ''
@@ -53,10 +53,11 @@ def hangman():
         print(f'\n{dash}')
         print(f'Tries letf: {turns}')
     
+    # Display win/loss message
     if turns == 0:
         print(f'\nYou lose. The secret word is {secret}\n')
     else:
         print(f'\nCongratulations you guessed correctly. \nThe secret word is {secret}\n')
 
 
-#hangman()
+hangman()
